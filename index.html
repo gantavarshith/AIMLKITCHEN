@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AIML Kitchen</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+        @layer base {
+            :root {
+                --brand-bg: #1a1b26;
+                --brand-surface: #24283b;
+                --brand-border: #414868;
+                --brand-text: #c0caf5;
+                --brand-text-secondary: #a9b1d6;
+                --brand-primary: #bb9af7;
+                --brand-accent: #7dcfff;
+                --brand-accent-dark: #50a5c7;
+            }
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), #bb9af71A, transparent 40%),
+                        radial-gradient(circle at var(--nx, 50%) var(--ny, 50%), #7dcfff1A, transparent 40%);
+            z-index: -1;
+            animation: move 20s infinite alternate;
+            will-change: transform;
+        }
+
+        @keyframes move {
+            0% {
+                --x: 10%;
+                --y: 10%;
+                --nx: 90%;
+                --ny: 90%;
+            }
+            25% {
+                --x: 90%;
+                --y: 20%;
+                --nx: 10%;
+                --ny: 80%;
+            }
+            50% {
+                --x: 80%;
+                --y: 90%;
+                --nx: 20%;
+                --ny: 10%;
+            }
+            75% {
+                --x: 20%;
+                --y: 80%;
+                --nx: 80%;
+                --ny: 20%;
+            }
+            100% {
+                --x: 10%;
+                --y: 10%;
+                --nx: 90%;
+                --ny: 90%;
+            }
+        }
+    </style>
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              bg: 'var(--brand-bg)',
+              surface: 'var(--brand-surface)',
+              border: 'var(--brand-border)',
+              text: {
+                DEFAULT: 'var(--brand-text)',
+                secondary: 'var(--brand-text-secondary)',
+              },
+              primary: 'var(--brand-primary)',
+              accent: {
+                DEFAULT: 'var(--brand-accent)',
+                dark: 'var(--brand-accent-dark)',
+              }
+            },
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Poppins', 'sans-serif'],
+          },
+          animation: {
+            'fade-in-up': 'fadeInUp 0.5s ease-out forwards',
+            'fade-in': 'fadeIn 0.3s ease-out forwards',
+          },
+          keyframes: {
+            fadeInUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+          },
+        },
+      },
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://aistudiocdn.com/react@^19.1.1",
+        "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+        "react/": "https://aistudiocdn.com/react@^19.1.1/",
+        "@google/genai": "https://aistudiocdn.com/@google/genai@^1.21.0"
+      }
+    }
+    </script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-brand-bg text-brand-text">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>

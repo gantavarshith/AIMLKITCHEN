@@ -1,0 +1,5 @@
+{
+  "name": "AIML Kitchen",
+  "description": "Find delicious recipes based on the ingredients you have at home.",
+  "requestFramePermissions": []
+}
